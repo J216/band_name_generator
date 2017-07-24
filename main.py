@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, response
 from os import listdir
 from os.path import isfile, join
 import twitter as tw
@@ -23,14 +23,14 @@ page_info['slides'] = [f for f in listdir('./static/images/band_names/') if isfi
 
 @app.route("/")
 def index():
-    r.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
-    r.headers['Pragma'] = 'no-cache'
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
     return render_template("index.html",page_info=page_info)
 
 @app.route("/band_name")
 def bandName():
-    r.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
-    r.headers['Pragma'] = 'no-cache'
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
     global names_made
     page_info['band_name']=bn.getName()
     bname=page_info['band_name']
@@ -50,10 +50,10 @@ def add_header(r):
     Add headers to both force latest IE rendering engine or Chrome Frame,
     and also to cache the rendered page for 10 minutes.
     """
-    r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-    r.headers["Pragma"] = "no-cache"
-    r.headers["Expires"] = "0"
-    r.headers['Cache-Control'] = 'public, max-age=0'
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    response.headers['Cache-Control'] = 'public, max-age=0'
     return r
 
 
