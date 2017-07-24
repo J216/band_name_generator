@@ -5,7 +5,7 @@ from PIL import ImageDraw
 
 
 def makeImage(text="Band Name here",fn_in="bg.png",fn_out="a_test.png"):
-    font = ImageFont.truetype("C:\\Users\\Kodkod\\Google Drive\\dev\\flask_projects\\band_name_generator\\DejaVuSans-Bold.ttf",32)
+    font = ImageFont.truetype("./DejaVuSans-Bold.ttf",32)
     tcolor = (255,0,0)
     text_pos = (50,100)
     img = Image.open(fn_in)
