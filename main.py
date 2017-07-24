@@ -1,4 +1,4 @@
-from flask import Flask, render_template, response
+from flask import Flask, render_template
 from os import listdir
 from os.path import isfile, join
 import twitter as tw
