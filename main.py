@@ -23,10 +23,14 @@ page_info['slides'] = [f for f in listdir('./static/images/band_names/') if isfi
 
 @app.route("/")
 def index():
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
     return render_template("index.html",page_info=page_info)
 
 @app.route("/band_name")
 def bandName():
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
     global names_made
     page_info['band_name']=bn.getName()
     bname=page_info['band_name']
@@ -51,5 +55,7 @@ def add_header(r):
     r.headers["Expires"] = "0"
     r.headers['Cache-Control'] = 'public, max-age=0'
     return r
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=5004)
