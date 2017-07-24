@@ -13,8 +13,5 @@ def makeImage(text="Band Name here",fn_in="bg.png",fn_out="a_test.png"):
     text = "...and your band\n   shall be called\n     "+text
     draw.text(text_pos, text, fill=tcolor, font=font)
     del draw
-    try:
-        img.save(fn_out)
-        return fn_out
-    except:
-        return "Failed to save image"
+    img.save(fn_out)
+    return fn_out
