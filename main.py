@@ -35,7 +35,7 @@ def bandName():
     print(ilay.makeImage(bname,fn_in='./bg.png',fn_out=p+fn_out))
     page_info['band_image']=fn_out
     names_made+=1
-    page_info['tweet_status']=tw.tweetImage(bn.getTweet(bname),ilay.makeImage(bname))
+    # page_info['tweet_status']=tw.tweetImage(bn.getTweet(bname),ilay.makeImage(bname))
     page_info['slides'] = [f for f in listdir('./static/images/band_names/') if isfile(join('./static/images/band_names/', f))]
     print(page_info['slides'])
     return render_template("band_name.html", page_info=page_info)
