@@ -23,14 +23,10 @@ page_info['slides'] = [f for f in listdir('./static/images/band_names/') if isfi
 
 @app.route("/")
 def index():
-    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
-    response.headers['Pragma'] = 'no-cache'
     return render_template("index.html",page_info=page_info)
 
 @app.route("/band_name")
 def bandName():
-    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
-    response.headers['Pragma'] = 'no-cache'
     global names_made
     page_info['band_name']=bn.getName()
     bname=page_info['band_name']
@@ -41,20 +37,9 @@ def bandName():
     names_made+=1
     # page_info['tweet_status']=tw.tweetImage(bn.getTweet(bname),ilay.makeImage(bname))
     page_info['slides'] = [f for f in listdir('./static/images/band_names/') if isfile(join('./static/images/band_names/', f))]
-    print(page_info['slides'])
     return render_template("band_name.html", page_info=page_info)
 
-@app.after_request
-def add_header(r):
-    """
-    Add headers to both force latest IE rendering engine or Chrome Frame,
-    and also to cache the rendered page for 10 minutes.
-    """
-    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-    response.headers["Pragma"] = "no-cache"
-    response.headers["Expires"] = "0"
-    response.headers['Cache-Control'] = 'public, max-age=0'
-    return r
+
 
 
 if __name__ == "__main__":
