@@ -61,9 +61,7 @@
       <div class="jumbotron">
         <h1>{{ page_info['band_name'] }}</h1>
         <p>
-            <!--
-            <img src="{{ url_for('static', filename=page_info['band_image']) }}" alt="{{ page_info['band_name'] }}">
-            -->
+            <img src="{{ url_for('static', filename=page_info['band_image'])+'?q='+page_info['moment'] }}" alt="{{ page_info['band_name'] }}">
         </p>
     </div>
 

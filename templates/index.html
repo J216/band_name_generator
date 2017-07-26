@@ -71,12 +71,12 @@
         </ol>
         <div class="carousel-inner" role="listbox">
           <div class="item active">
-            <img src="{{ url_for('static', filename='images/band_names/'+page_info['slides'][0]) }}" alt="First slide">
+            <img src="{{ url_for('static', filename='images/band_names/'+page_info['slides'][0])+'?q='+page_info['moment'] }}" alt="First slide">
           </div>
 
           {% for slide in page_info['slides'] %}
             <div class="item">
-              <img src="{{ url_for('static', filename='images/band_names/'+slide) }}" alt="Band Name">
+              <img src="{{ url_for('static', filename='images/band_names/'+slide)+'?q='+page_info['moment'] }}" alt="Band Name">
             </div>
           {% else %}
             <li><em>Unbelievable.  No entries here so far</em>
